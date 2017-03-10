@@ -1,0 +1,33 @@
+@import '~scss_vars';
+
+.ui.items > .item {
+    > .image.circular.tiny {
+        height: 80px;
+    }
+}
+
+.segment {
+	margin:0px !important;
+}
+
+
+.conversation-item {}
+
+.conversation-item.author .message-content {
+	background-color: #E3F2FD !important;
+}
+
+.conversation-item.message-content {
+	background-color: #E3F2FD
+}
+
+
+.conversation-item .sent-at {
+	font-size:0.8em;
+	color:rgba(0,0,0,.25)
+}
+
+.conversation-item.author .sent-at {
+	float:right;
+	clear:both
+}

@@ -1,0 +1,270 @@
+input[type=range][orient=vertical]
+{
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+    width: 8px;
+    height: 175px;
+    padding: 0 5px;
+}
+
+
+
+// // /*!
+// //  * # Range slider for Semantic UI.
+// //  *
+// //  */
+// //
+// // .ui {
+// //   &.range {
+// //     width: 100%;
+// //     height: 20px;
+// //     .inner {
+// //       margin: 0 10px 0 10px;
+// //       height: 20px;
+// //       position: relative;
+// //       &:hover {
+// //         cursor: pointer;
+// //       }
+// //       .track {
+// //         position: absolute;
+// //         width: 100%;
+// //         height: 4px;
+// //         border-radius: 4px;
+// //         top: 9px;
+// //         left: 0;
+// //         background-color: rgba(0, 0, 0, 0.05);
+// //       }
+// //     }
+// //   }
+// //   &.inverted.range .inner .track {
+// //     background-color: rgba(255, 255, 255, 0.08);
+// //   }
+// //   &.range .inner .track-fill {
+// //     position: absolute;
+// //     width: 0;
+// //     height: 4px;
+// //     border-radius: 4px;
+// //     top: 9px;
+// //     left: 0;
+// //     background-color: #1b1c1d;
+// //   }
+// //   &.inverted.range .inner .track-fill {
+// //     background-color: #545454;
+// //   }
+// //   &.range .inner .thumb {
+// //     position: absolute;
+// //     top: 0;
+// //     left: 0;
+// //     height: 20px;
+// //     width: 20px;
+// //     background: #fff linear-gradient(transparent, rgba(0, 0, 0, 0.05));
+// //     background: #fff -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05));
+// //     background: #fff -o-linear-gradient(transparent, rgba(0, 0, 0, 0.05));
+// //     background: #fff -moz-linear-gradient(transparent, rgba(0, 0, 0, 0.05));
+// //     border-radius: 100%;
+// //     box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), 0 0 0 1px rgba(34, 36, 38, 0.15) inset;
+// //   }
+// //   &.red {
+// //     &.range .inner .track-fill {
+// //       background-color: #DB2828;
+// //     }
+// //     &.inverted.range .inner .track-fill {
+// //       background-color: #FF695E;
+// //     }
+// //   }
+// //   &.orange {
+// //     &.range .inner .track-fill {
+// //       background-color: #F2711C;
+// //     }
+// //     &.inverted.range .inner .track-fill {
+// //       background-color: #FF851B;
+// //     }
+// //   }
+// //   &.yellow {
+// //     &.range .inner .track-fill {
+// //       background-color: #FBBD08;
+// //     }
+// //     &.inverted.range .inner .track-fill {
+// //       background-color: #FFE21F;
+// //     }
+// //   }
+// //   &.olive {
+// //     &.range .inner .track-fill {
+// //       background-color: #B5CC18;
+// //     }
+// //     &.inverted.range .inner .track-fill {
+// //       background-color: #D9E778;
+// //     }
+// //   }
+// //   &.green {
+// //     &.range .inner .track-fill {
+// //       background-color: #21BA45;
+// //     }
+// //     &.inverted.range .inner .track-fill {
+// //       background-color: #2ECC40;
+// //     }
+// //   }
+// //   &.teal {
+// //     &.range .inner .track-fill {
+// //       background-color: #00B5AD;
+// //     }
+// //     &.inverted.range .inner .track-fill {
+// //       background-color: #6DFFFF;
+// //     }
+// //   }
+// //   &.blue {
+// //     &.range .inner .track-fill {
+// //       background-color: #2185D0;
+// //     }
+// //     &.inverted.range .inner .track-fill {
+// //       background-color: #54C8FF;
+// //     }
+// //   }
+// //   &.violet {
+// //     &.range .inner .track-fill {
+// //       background-color: #6435C9;
+// //     }
+// //     &.inverted.range .inner .track-fill {
+// //       background-color: #A291FB;
+// //     }
+// //   }
+// //   &.purple {
+// //     &.range .inner .track-fill {
+// //       background-color: #A333C8;
+// //     }
+// //     &.inverted.range .inner .track-fill {
+// //       background-color: #DC73FF;
+// //     }
+// //   }
+// //   &.pink {
+// //     &.range .inner .track-fill {
+// //       background-color: #E03997;
+// //     }
+// //     &.inverted.range .inner .track-fill {
+// //       background-color: #FF8EDF;
+// //     }
+// //   }
+// //   &.brown {
+// //     &.range .inner .track-fill {
+// //       background-color: #A5673F;
+// //     }
+// //     &.inverted.range .inner .track-fill {
+// //       background-color: #D67C1C;
+// //     }
+// //   }
+// //   &.grey {
+// //     &.range .inner .track-fill {
+// //       background-color: #767676;
+// //     }
+// //     &.inverted.range .inner .track-fill {
+// //       background-color: #DCDDDE;
+// //     }
+// //   }
+// //   &.black {
+// //     &.range .inner .track-fill {
+// //       background-color: #1b1c1d;
+// //     }
+// //     &.inverted.range .inner .track-fill {
+// //       background-color: #545454;
+// //     }
+// //   }
+// //   &.range.disabled {
+// //     opacity: .5;
+// //     .inner {
+// //       &:hover {
+// //         cursor: auto;
+// //       }
+// //       .track-fill {
+// //         background: #ccc;
+// //       }
+// //     }
+// //   }
+// // }
+// input[type=range] {
+//   -webkit-appearance: none;
+//   margin: 18px 0;
+//   width: 100%;
+// }
+// input[type=range]:focus {
+//   outline: none;
+// }
+// input[type=range]::-webkit-slider-runnable-track {
+//   width: 100%;
+//   height: 8.4px;
+//   cursor: pointer;
+//   animate: 0.2s;
+//   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+//   background: #3071a9;
+//   border-radius: 1.3px;
+//   border: 0.2px solid #010101;
+// }
+// input[type=range]::-webkit-slider-thumb {
+//   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+//   border: 1px solid #000000;
+//   height: 36px;
+//   width: 16px;
+//   border-radius: 3px;
+//   background: #ffffff;
+//   cursor: pointer;
+//   -webkit-appearance: none;
+//   margin-top: -14px;
+// }
+// input[type=range]:focus::-webkit-slider-runnable-track {
+//   background: #367ebd;
+// }
+// input[type=range]::-moz-range-track {
+//   width: 100%;
+//   height: 8.4px;
+//   cursor: pointer;
+//   animate: 0.2s;
+//   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+//   background: #3071a9;
+//   border-radius: 1.3px;
+//   border: 0.2px solid #010101;
+// }
+// input[type=range]::-moz-range-thumb {
+//   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+//   border: 1px solid #000000;
+//   height: 36px;
+//   width: 16px;
+//   border-radius: 3px;
+//   background: #ffffff;
+//   cursor: pointer;
+// }
+// input[type=range]::-ms-track {
+//   width: 100%;
+//   height: 8.4px;
+//   cursor: pointer;
+//   animate: 0.2s;
+//   background: transparent;
+//   border-color: transparent;
+//   border-width: 16px 0;
+//   color: transparent;
+// }
+// input[type=range]::-ms-fill-lower {
+//   background: #2a6495;
+//   border: 0.2px solid #010101;
+//   border-radius: 2.6px;
+//   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+// }
+// input[type=range]::-ms-fill-upper {
+//   background: #3071a9;
+//   border: 0.2px solid #010101;
+//   border-radius: 2.6px;
+//   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+// }
+// input[type=range]::-ms-thumb {
+//   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+//   border: 1px solid #000000;
+//   height: 36px;
+//   width: 16px;
+//   border-radius: 3px;
+//   background: #ffffff;
+//   cursor: pointer;
+// }
+// input[type=range]:focus::-ms-fill-lower {
+//   background: #3071a9;
+// }
+// input[type=range]:focus::-ms-fill-upper {
+//   background: #367ebd;
+// }
