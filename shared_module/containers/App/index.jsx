@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Dimmer} from 'semantic-ui-react';
-import {Header, Sidebar, Footer, AppComponent} from 'shared_module/components'
-import {CLOSE_SIDEBAR, OPEN_SIDEBAR, WINDOW_RESIZE, LOGOUT_AUTH} from 'shared_module/actions';
-import {push} from 'react-router-redux'
-import cx from 'classnames';
-// import sidebarRoutingList from 'routing/sidebarRoutingList'
+import {AppComponent} from 'shared_module/components'
+import {CLOSE_SIDEBAR, OPEN_SIDEBAR, WINDOW_RESIZE} from 'shared_module/actions';
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class App extends Component {
@@ -23,29 +19,14 @@ export default class App extends Component {
         checkLoggedIn: React.PropTypes.func,
         logout: React.PropTypes.func,
         toggleSidebar: React.PropTypes.func,
-        onHeaderInboxClick: React.PropTypes.func
+        onHeaderInboxClick: React.PropTypes.func,
+        sidebarRoutingList: React.PropTypes.array // FIX!
     }
-    // componentWillMount() {}
 
-    checkAppLoggedIn() {
-        let {checkLoggedIn, isLoggedIn, router} = this.props;
-        let path = router.getCurrentLocation().pathname;
-        // check is user allowed to visit this path
-        // console.log('checkAppLoggedIn: isLoggedIn + path', isLoggedIn, path, Date.now())
-        checkLoggedIn(isLoggedIn, path)
-    }
-    //
-    // componentWillReceiveProps() {
-    //     console.log(this.props)
-    //     this.checkAppLoggedIn()
-    // }
-    componentDidUpdate() {
-        this.checkAppLoggedIn()
-    }
+    componentDidUpdate() {}
 
     componentWillMount() {
         let {handleWindowResize} = this.props;
-        this.checkAppLoggedIn()
         window.addEventListener('resize', handleWindowResize);
     }
 
@@ -54,12 +35,8 @@ export default class App extends Component {
     }
 
     render() {
-        let {children, sidebarOpened, closeSidebar, obfuscatorActive, isLoggedIn, logout, onHeaderInboxClick, toggleSidebar} = this.props;
+        let {children, sidebarOpened, closeSidebar, obfuscatorActive, isLoggedIn, logout, onHeaderInboxClick, toggleSidebar, sidebarRouting} = this.props;
         let title = children.props.route.name;
-        let mainBlockStyles = cx({
-            no_sidebar: !isLoggedIn
-        })
-        let sidebarRouting = this.getSidebarRouting()
 
         let propsForAppComponent = {
             sidebarRouting,
@@ -75,7 +52,7 @@ export default class App extends Component {
         }
 
         return (
-            <AppComponent />
+            <AppComponent {...propsForAppComponent} />
         );
     }
 }
@@ -92,33 +69,6 @@ function mapDispatchToProps(dispatch) {
     return {
         closeSidebar: () => {
             dispatch(CLOSE_SIDEBAR())
-        },
-        logout: () => {
-            dispatch(LOGOUT_AUTH())
-        },
-        checkLoggedIn: function(isLoggedIn, path) {
-            // this code is strange
-            //  have to be rewritten
-
-            // allowed paths to visit
-            // console.log('check logged in', isLoggedIn, path)
-            let authPath = '/auth'
-            let homePath = ''
-            let allowedWithoutCredentialsPaths = [authPath]
-            if (isLoggedIn) {
-                // if user is logged in, but is going to visit auth path
-                // then push him to homePath
-                if (path === authPath) {
-                    dispatch(push(homePath))
-                }
-            } else {
-                // if user isnt logged in
-                // console.log('USER ISNT LOGGED IN(APP.checkLoggedIn)')
-                // if user is trying to visit not allowed without credentials path
-                if (allowedWithoutCredentialsPaths.indexOf(path) === -1) {
-                    dispatch(push(authPath))
-                }
-            }
         },
         toggleSidebar: () => {
             dispatch(OPEN_SIDEBAR())

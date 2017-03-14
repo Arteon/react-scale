@@ -136,7 +136,7 @@ export default class LoginComponent extends Component {
                     <Form onSubmit={this.login.bind(this)}{...loginFormProps}>
                         {prettyLoginError && <Message error header={prettyLoginError.header} content={prettyLoginError.content}/>}
                         {inputComponents}
-                        <div className="form actions">
+                        <div className="text-center">
                             <Button {...loginBtnProps}/>
                         </div>
                     </Form>

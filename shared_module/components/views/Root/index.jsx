@@ -6,15 +6,16 @@ export default class Root extends Component {
     static propTypes = {
         store: React.PropTypes.object,
         history: React.PropTypes.object,
-        routes: React.PropTypes.object,
+        routes: React.PropTypes.object
+        // RootApp: React.PropTypes.any
     }
 
     render() {
         const {store, history, routes} = this.props;
         return (
-            <Provider store={store}>
-                <Router routes={routes} history={history}/>
-            </Provider>
+                <Provider store={store}>
+                    <Router routes={routes} history={history}/>
+                </Provider>
         );
     }
 }

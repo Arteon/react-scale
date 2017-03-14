@@ -4,7 +4,7 @@ import {Header, Sidebar, Footer} from 'shared_module/components'
 import cx from 'classnames';
 import './App.scss';
 
-export default class App extends Component {
+export default class AppComponent extends Component {
     constructor(props) {
         super(props);
     }
@@ -18,14 +18,13 @@ export default class App extends Component {
         logout: React.PropTypes.func,
         toggleSidebar: React.PropTypes.func,
         onHeaderInboxClick: React.PropTypes.func,
-        title: React.PropTypes.string
+        title: React.PropTypes.string,
+        sidebarRouting: React.PropTypes.array
     }
 
     render() {
-        let {children, sidebarOpened, closeSidebar, obfuscatorActive, isLoggedIn, logout, onHeaderInboxClick, toggleSidebar, title} = this.props;
-        let mainBlockStyles = cx({
-            no_sidebar: !isLoggedIn
-        })
+        let {children, sidebarOpened, closeSidebar, obfuscatorActive, isLoggedIn, logout, onHeaderInboxClick, toggleSidebar, title, sidebarRouting} = this.props;
+        let mainBlockStyles = cx({no_sidebar: !isLoggedIn})
 
         return (
             <div className="page-layout">

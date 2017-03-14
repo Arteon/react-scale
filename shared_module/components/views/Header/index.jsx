@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Icon, Button, Popup, Image} from 'semantic-ui-react';
 import {Link} from 'react-router';
 import cx from 'classnames';
-// import Logo from '../Logo'
+// import {Logo} from 'shared_module/components'
 import './Header.scss'
 
 export default class Header extends Component {
@@ -29,9 +29,10 @@ export default class Header extends Component {
             <header className={headerStyles}>
                 <div className="header-inner">
                     {/* {!isLoggedIn && <Logo />} */}
-                    {isLoggedIn && <span className="title">
-                         <Icon name='content' onClick={toggleSidebar}/> {title}
-                    </span>}
+                    <span className="title">
+                         {isLoggedIn && <Icon name='content' onClick={toggleSidebar}/>}
+                         {title}
+                    </span>
                     <span className="spacer"></span>
                     {isLoggedIn && <Popup
                         trigger={<Button icon as={Link} to="/inbox" basic>

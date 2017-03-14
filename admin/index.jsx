@@ -11,6 +11,7 @@ import {createStore, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk';
 import RootReducer from './reducers'
 import {Root} from 'shared_module/components'
+import {RootApp} from 'containers'
 import devTools from 'shared_module/utils/dev'
 import routes from './routing';
 import config from 'config'
@@ -42,7 +43,11 @@ const renderRoot = (Root) => {
     window.BASE_API = config.BASE_API
     let store = configureStore(preloadedState);
     let history = syncHistoryWithStore(browserHistory, store);
-    render(<Root routes={routes} history={history} store={store}/>, document.getElementById('app'));
+    render(
+        <Root
+            routes={routes}
+            history={history}
+            store={store} />, document.getElementById('app'));
 }
 
 renderRoot(Root)

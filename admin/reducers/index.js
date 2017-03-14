@@ -5,7 +5,7 @@ import * as layout from 'shared_module/reducers/layout';
 import * as loginCR from 'shared_module/reducers/loginCR'
 import * as auth from 'shared_module/reducers/auth'
 import * as media from 'shared_module/reducers/media'
-import * as utils from 'shared_module/reducers/error'
+import * as utils from 'shared_module/reducers/utils'
 
 
 import {combineReducers} from 'redux';
@@ -16,7 +16,6 @@ export default combineReducers({
     ...inbox,
     ...auth,
     ...conversation,
-    ...dashboard,
     ...media,
     ...utils,
     ...loginCR,

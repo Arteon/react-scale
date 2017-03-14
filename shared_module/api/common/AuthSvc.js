@@ -35,15 +35,14 @@ export function isLoggedIn() {
 }
 
 export async function verifyToken() {
-    return await get('/api-token-verify/')
+    return await get('/auth/verify/')
 }
 export async function refreshToken() {
-    return await get('/api-token-refresh/')
+    return await get('/auth/refresh/')
 }
 
 export async function login_API(data) {
-    console.log(data)
-    return await post('/api-token-auth/', data)
+    return await post('/auth', data)
 }
 
 export async function recoverPassword_API(data) {
