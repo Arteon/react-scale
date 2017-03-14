@@ -1,17 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import _ from 'lodash'
-import {Link} from 'react-router';
 
-// @connect(mapStateToProps, mapDispatchToProps)
-export default class Dashboard extends Component {
+@connect(mapStateToProps, mapDispatchToProps)
+class Dashboard extends Component {
     constructor(props){
         super(props)
     }
-
-    static propTypes = {}
-
-    componentDidMount() {}
 
     render() {
 
@@ -33,3 +27,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {}
 }
+
+
+export default Dashboard;
