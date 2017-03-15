@@ -1,19 +1,20 @@
-import {isLoggedIn} from '../api';
+import {isLoggedIn} from 'shared_module/api';
 import {
     LOGIN_AUTH_FAIL,
     LOGIN_AUTH_SUCCESS,
     LOGOUT_AUTH_SUCCESS,
-    REGISTER_AUTH_FAIL,
-    REGISTER_AUTH_SUCCESS,
-    RECOVER_PASSWORD_AUTH_FAIL,
-    RECOVER_PASSWORD_AUTH_SUCCESS,
+    // REGISTER_AUTH_FAIL,
+    // REGISTER_AUTH_SUCCESS,
+    // RECOVER_PASSWORD_AUTH_FAIL,
+    // RECOVER_PASSWORD_AUTH_SUCCESS,
 
     LOCATION_CHANGE
-} from '../actions'
+} from 'shared_module/actions'
 
 let initialState = {
     loggedIn: isLoggedIn()
 }
+
 export function auth(state = initialState, action) {
     switch (action.type) {
         case LOCATION_CHANGE:
@@ -41,7 +42,6 @@ export function auth(state = initialState, action) {
             }
 
         case LOGOUT_AUTH_SUCCESS:
-        console.log('LOGOUT')
             {
                 return {
                     ...state,
@@ -64,36 +64,36 @@ export function auth(state = initialState, action) {
                 }
             }
 
-        case REGISTER_AUTH_FAIL:
-            {
-                return {
-                    ...state,
-                    loggedIn: true
-                }
-            }
-        case REGISTER_AUTH_SUCCESS:
-            {
-                return {
-                    ...state,
-
-                    loggedIn: true
-                }
-            }
-
-        case RECOVER_PASSWORD_AUTH_FAIL:
-            {
-                return {
-                    ...state,
-                    loggedIn: true
-                }
-            }
-        case RECOVER_PASSWORD_AUTH_SUCCESS:
-            {
-                return {
-                    ...state,
-                    loggedIn: true
-                }
-            }
+        // case REGISTER_AUTH_FAIL:
+        //     {
+        //         return {
+        //             ...state,
+        //             loggedIn: true
+        //         }
+        //     }
+        // case REGISTER_AUTH_SUCCESS:
+        //     {
+        //         return {
+        //             ...state,
+        //
+        //             loggedIn: true
+        //         }
+        //     }
+        //
+        // case RECOVER_PASSWORD_AUTH_FAIL:
+        //     {
+        //         return {
+        //             ...state,
+        //             loggedIn: true
+        //         }
+        //     }
+        // case RECOVER_PASSWORD_AUTH_SUCCESS:
+        //     {
+        //         return {
+        //             ...state,
+        //             loggedIn: true
+        //         }
+        //     }
         default:
             return state
     }

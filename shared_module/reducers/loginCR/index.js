@@ -1,4 +1,4 @@
-import {LOGIN_AUTH_FAIL, LOGIN_AUTH_SUCCESS} from '../actions';
+import {LOGIN_AUTH_FAIL, LOGIN_AUTH_SUCCESS} from 'shared_module/actions';
 
 const initialState = {
     loginError: false,

@@ -1,4 +1,5 @@
-import {UI_OPEN_SIDEBAR, UI_CLOSE_SIDEBAR, UI_WINDOW_RESIZE, LOCATION_CHANGE} from '../actions'
+import {UI_OPEN_SIDEBAR, UI_CLOSE_SIDEBAR, UI_WINDOW_RESIZE, LOCATION_CHANGE} from 'shared_module/actions'
+
  // UI_ACTIVATE_OBFUSCATOR, UI_DEACTIVATE_OBFUSCATOR
 const initialState = {
     sidebarOpened: false,
@@ -7,12 +8,10 @@ const initialState = {
 }
 
 export function layout(state = initialState, action) {
-    let isMobile = window.innerWidth < 1024
+    let isMobile = window.innerWidth < 1025
     switch (action.type) {
         case UI_WINDOW_RESIZE:
             {
-                let {innerWidth} = window
-                let isMobile = innerWidth < 1025 // 1024px - is the main breakpoint in ui
                 return {
                     ...state,
                     isMobile

@@ -7,7 +7,7 @@ export async function checkAuthToken () {
 }
 
 export function getLocalToken() {
-    return store.get('auth_jwt_token')
+    return (store.get('auth_jwt_token') || null)
 }
 
 export function getCSRFToken() {

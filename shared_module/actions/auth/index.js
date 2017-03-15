@@ -5,7 +5,7 @@ import {
     setLocalToken,
     resetLocalToken,
     resultOK
-} from '../api';
+} from 'shared_module/api';
 
 export const LOGIN_AUTH_SUCCESS = 'LOGIN_AUTH_SUCCESS'
 export const LOGIN_AUTH_FAIL = 'LOGIN_AUTH_FAIL'

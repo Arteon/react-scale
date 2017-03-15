@@ -1,7 +1,7 @@
-import {getLocalToken} from '../common/AuthSvc';
+import {getLocalToken} from 'shared_module/api';
 import {isObject} from 'lodash';
-import {THROW_ERROR} from '../../actions'
-
+import {THROW_ERROR} from 'shared_module/actions'
+// no handling of post() with no args?
 export function requestWrapper(method) {
     return async function(url, data = null, params = {}) {
         // default params to fetch = method + (Content-Type for lulz)
@@ -12,6 +12,7 @@ export function requestWrapper(method) {
                 'Content-Type': 'application/json; charset=UTF-8'
             }
         }
+
         // console.log(url, data, params)
         if (method === 'GET') {
             // GET HAVE ONLY params and url
@@ -27,7 +28,7 @@ export function requestWrapper(method) {
             // or is it a PUT, POST, DELETE?
         } else {
             // hmm, strange...
-            throw new Error(`XHR invalid, check ${method} for url ${url}`)
+            throw new Error(`XHR invalid, check ${method} for url ${url}, likely it was caused by empty request body and not-GET type of request`)
         }
 
         // check that req url is relative and request was sent to our domain
@@ -61,7 +62,8 @@ export function requestWrapper(method) {
             try {
                 return await fetch(url, paramsObj)
                 // .then(checkStatus)
-                    .then(parseJSON).catch((err) => {
+                    .then(parseJSON)
+                    .catch((err) => {
                     console.error(err)
                     return THROW_ERROR(err);
                 })

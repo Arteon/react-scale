@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 
-@connect(mapStateToProps, mapDispatchToProps)
-class Dashboard extends Component {
+export default class Dashboard extends Component {
     constructor(props){
         super(props)
     }
@@ -16,17 +14,3 @@ class Dashboard extends Component {
         )
     }
 }
-
-
-
-function mapStateToProps(state) {
-    // console.log(state)
-    return {}
-}
-
-function mapDispatchToProps(dispatch) {
-    return {}
-}
-
-
-export default Dashboard;

@@ -9,7 +9,7 @@ import {
     addVideo_API,
     removeVideo_API,
     resultOK
-} from '../api';
+} from 'shared_module/api';
 // PHOTO
 export const GET_PHOTOS_FAIL = 'GET_PHOTO_FAIL';
 export const GET_PHOTOS_SUCCESS = 'GET_PHOTO_SUCCESS';
