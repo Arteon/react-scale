@@ -8,7 +8,7 @@ This repo may provide a good example how to solve problems associated with this 
 ### Main idea:
 We want to create app, that will be:
 
-    - scalable  - easily add any new feature without breaking written before code.
+    - scalable  - easily add any new feature without breaking already written code.
     - big - it means really big, not a f$$$ing hello-world or one-line-example.
     - robust - robustness is the most important.
     - theory-powered(?) - FP, patterns, etc.
