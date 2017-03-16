@@ -1,5 +1,8 @@
 {
     "moduleFileExtensions": ["js", "jsx"],
+    "testPathIgnorePatterns": [
+        "<rootDir>/user/config", "<rootDir>/admin"
+    ],
     "moduleNameMapper": {
         "^shared_module$": "<rootDir>/shared_module",
         "^shared_module/api$": "<rootDir>/shared_module/api",
