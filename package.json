@@ -73,7 +73,7 @@
         "admin_dev": "node webpack_config/server.js --app=admin",
         "admin_build": "REACT_APP=admin webpack --config webpack_config/webpack.admin.prod.js",
         "test:admin": "jest --config=jest_config/jest.admin.js --coverage",
-        "test:user": "jest --config=jest_config/jest.test.js --coverage",
+        "test:user": "jest --config=jest_config/jest.user.js --coverage",
         "test": "npm run test:admin && npm run test:user",
         "test:admin:watch": "npm run test:admin -- --watch ",
         "test:user:watch": "npm run test:user -- --watch"
