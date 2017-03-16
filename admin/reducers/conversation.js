@@ -8,7 +8,7 @@ import {
 } from 'actions/conversation'
 import {LOCATION_CHANGE} from 'shared_module/actions'
 
-export const initialState = {
+let initialState = {
     conversation: {}
 }
 

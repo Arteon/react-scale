@@ -1,7 +1,7 @@
 import {GET_INBOX_SUCCESS, GET_INBOX_FAIL} from 'actions/inbox'
 import {LOCATION_CHANGE} from 'shared_module/actions'
 
-const initialState = {
+let initialState = {
     isDataLoading: true,
     errorLoadingConversations: false,
     conversations: []

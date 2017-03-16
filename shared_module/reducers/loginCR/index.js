@@ -4,7 +4,7 @@ const initialState = {
     loginError: false,
     loginSuccess: false
 }
-
+// LoginContainer Reducer
 export function loginCR(state = initialState, action) {
     switch (action.type) {
         case LOGIN_AUTH_FAIL:
