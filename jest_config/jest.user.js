@@ -1,8 +1,12 @@
 {
-    "moduleFileExtensions": ["js", "jsx"],
+    "moduleFileExtensions": [
+        "js", "jsx"
+    ],
     "testPathIgnorePatterns": [
         "<rootDir>/user/config", "<rootDir>/admin"
     ],
+    "setupFiles": ["<rootDir>/jest_config/setupJest.js"],
+    "automock": false,
     "moduleNameMapper": {
         "^shared_module$": "<rootDir>/shared_module",
         "^shared_module/api$": "<rootDir>/shared_module/api",

@@ -37,6 +37,7 @@ export function requestWrapper(method) {
             if (token) {
                 defaults.headers['Authorization'] = `JWT ${token}`;
             }
+            
             if (window.BASE_API) {
                 url = window.BASE_API + url
             }
@@ -61,14 +62,14 @@ export function requestWrapper(method) {
 
             try {
                 return await fetch(url, paramsObj)
-                // .then(checkStatus)
+                    // .then(checkStatus)
                     .then(parseJSON)
                     .catch((err) => {
-                    console.error(err)
-                    return THROW_ERROR(err);
-                })
+                        console.error(err, "Catched error in utils/xhr_wrapper/fetch.catch()")
+                        return THROW_ERROR(err);
+                    })
             } catch (e) {
-                console.log('Catched error in request. utils.js', e)
+                console.log('Is fetch defined?', e)
                 return {}
             }
         }
@@ -95,18 +96,14 @@ async function parseJSON(res) {
 }
 // checks reqs status
 // function checkStatus(response) {
-//   if (response.status >= 200 && response.status < 300) {
-//     return response
-//   } else if(response.status == 400){
-//       return response
-//   } else  {
-//     var error = new Error(response.statusText)
-//     error.response = response
-//     console.error(error)
-//     throw error
-//     // return response
-//
-//   }
+//     if (response.status >= 200 && response.status < 300) {
+//         return response
+//     } else if (response.status == 400) {
+//         return response
+//     } else {
+//         console.log(error, "Hm, xhr_wrapper/checkStatus: request has unpredicted status_code.")
+//         return response
+//     }
 // }
 
 export const get = requestWrapper('GET')

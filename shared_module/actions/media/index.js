@@ -47,9 +47,7 @@ export const GET_PHOTOS = () => {
 export const ADD_PHOTO = (file) => {
     return async function() {
         let data = new FormData()
-        console.log(file)
         data.append('photo', file)
-        console.log('form data photo:', data.getAll('photo'))
         let result = await addPhoto_API(data)
         if (!resultOK(result)) {
             return {type: ADD_PHOTO_FAIL, error: 'Sorry, error occured.'}
