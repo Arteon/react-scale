@@ -1,17 +1,18 @@
 # React-Scale
-## [Under development!]
+## [WORKS, but still is under development]
 ### Preface:
 I think, that you've ever had a situation in your project, when you have 2 almost similar apps with common css, common components, but they're still so different.
 
 This repo may provide a good example how to solve problems associated with this issue.
 
+Anywhere, it's a big example/starter
+
 ### Main idea:
 Create app, that will be:
 
     - scalable  - easily add any new feature without breaking already written code.
-    - big - it means really big, not a f$$$ing hello-world or one-line-example.
+    - big - it means not a f$$$ing hello-world or one-line-example.
     - robust - robustness is the most important.
-    - theory-powered(?) - FP, patterns, etc.
 
 ### To start:
 ```bash
@@ -24,6 +25,11 @@ Create app, that will be:
     npm run admin_dev
     # Run user app:
     npm run user_dev
+
+
+    # Run server:
+    npm run server:dev # reload on changes (by nodemon)
+    npm run server # run app
 
 
     # ------BUILD------
@@ -55,8 +61,8 @@ Create app, that will be:
 
 ### Plans:
 - [ ] Add SSR
-- [ ] Add server
-- [ ] Add more tests
+- [x] Add server
+- [x] Add some tests
 - [ ] Add socket.io
 
 # License

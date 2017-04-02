@@ -72,7 +72,9 @@
     "webpack-hot-middleware": "^2.17.1"
   },
   "scripts": {
-    "server": "nodemon ./server",
+    "server:dev": "nodemon --exec babel-node ./server",
+    "server": "babel-node ./server",
+    "db": "nodemon --exec babel-node ./db",
     "dev": "concurrently \"PORT=3000 npm run user_dev\" \"PORT=3030 npm run admin_dev\"",
     "user_dev": "node webpack_config/server.js --app=user",
     "user_build": "REACT_APP=user webpack --config webpack_config/webpack.user.prod.js",
