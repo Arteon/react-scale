@@ -6,7 +6,7 @@ I think, that you've ever had a situation in your project, when you have 2 almos
 This repo may provide a good example how to solve problems associated with this issue.
 
 ### Main idea:
-We want to create app, that will be:
+Create app, that will be:
 
     - scalable  - easily add any new feature without breaking already written code.
     - big - it means really big, not a f$$$ing hello-world or one-line-example.
@@ -16,6 +16,9 @@ We want to create app, that will be:
 ### To start:
 ```bash
     # ------DEVELOPMENT------
+
+    # Run both apps:
+    npm run dev # user_app is available at 3000 port, admin - 3030.
 
     # Run admin app:
     npm run admin_dev
@@ -55,11 +58,9 @@ We want to create app, that will be:
 - [ ] Add server
 - [ ] Add more tests
 - [ ] Add socket.io
-- [ ] More FP, more theory (?)
 
 # License
 MIT
 
 # Author
 Vladimir Metnew, <vladimirmetnew@gmail.com>    
-App created specially for [poptop.uk.com](poptop.uk.com)

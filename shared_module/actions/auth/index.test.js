@@ -1,13 +1,12 @@
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import * as actions from 'shared_module/actions'
-import nock from 'nock'
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
 
 describe('Auth actions', () => {
 
-    it('creates LOGIN_AUTH_SUCCESS when login has been done successfully', async () => {
+    it('creates LOGIN_AUTH_SUCCESS when login has been done successfully', () => {
         let result = {
             data: {
                 token: "string"
@@ -25,6 +24,7 @@ describe('Auth actions', () => {
 
         return store.dispatch(actions.LOGIN_AUTH({})).then(() => {
             let dispatched = store.getActions()
+            console.log(dispatched)
             expect(dispatched).toEqual(expectedActions)
         })
     })

@@ -2,7 +2,7 @@
 const path = require('path')
 let argv = process.env.REACT_APP ? process.env.REACT_APP : require('minimist')(process.argv.slice(2)).app
 module.exports = {
-  port: 3000,
+  port: process.env.PORT || 3000,
   context: path.resolve(process.cwd(), argv),
   title: 'React App',
   publicPath: '/',

@@ -44,10 +44,11 @@ export default class Inbox extends Component {
     render() {
         let {conversations} = this.props;
         let {activeItemFilter} = this.state;
-        let noConversations = !conversations || conversations.length === 0
-        let conversations_components = ''
-        console.log(conversations)
-        if (!noConversations) {
+        let conversationsLoading = _.isNull(conversations)
+        let noConversations = _.isArray(conversations) && conversations.length === 0
+        let conversations_components = null
+
+        if (!noConversations && !conversationsLoading) {
             conversations_components = conversations.map((obj, i) => {
                 return (<InboxItemComponent key={i} item={obj}/>)
             })
@@ -55,13 +56,12 @@ export default class Inbox extends Component {
         return (
             <Grid reversed="mobile vertically" stackable className="inbox-list-container">
                 <Grid.Column width={12}>
-                    {/* BUG: use isDataLoading for handling noConversations and loaded state. */}
-                    {!noConversations
-                        ? <Item.Group divided>
-                                {conversations_components}
-                            </Item.Group>
-                        : <Loader active={true}>Loading...</Loader>}
-                    {/* {noConversations && <div>You have no conversations, man :(</div>} */}
+                    {!conversationsLoading && <Loader active={true}>Loading...</Loader>}
+
+                    {conversations_components && <Item.Group divided>
+                        {conversations_components}
+                    </Item.Group>}
+                    {noConversations && <div>sorry, u have no convs</div>}
 
                 </Grid.Column>
                 <Grid.Column width={4}>

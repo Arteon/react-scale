@@ -48,16 +48,12 @@ export default class AppWrapper extends Component {
             logout
         }
 
-        return (
-            <App {...propsForAppComponent} />
-        );
+        return (<App {...propsForAppComponent}/>)
     }
 }
 
 function mapStateToProps(state, props) {
-    return {
-        isLoggedIn: state.auth.loggedIn
-    }
+    return {isLoggedIn: state.auth.loggedIn}
 }
 
 function mapDispatchToProps(dispatch) {
@@ -72,7 +68,7 @@ function mapDispatchToProps(dispatch) {
             let authPath = '/auth'
             let homePath = ''
             let allowedWithoutCredentialsPaths = [authPath]
-            
+
             if (isLoggedIn) {
                 // if user is logged in, but is going to visit auth path
                 // then push him to homePath

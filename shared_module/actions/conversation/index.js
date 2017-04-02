@@ -28,17 +28,6 @@ export const GET_CONVERSATION = (id) => {
     }
 }
 
-export const GET_CONVERSATION_LOL = (id) => {
-    // вот это можно "не писать", писать сразу асинк функцию без обертки
-    return async function() {
-        let result = await getConversationLol_API(id)
-        if (!resultOK(result)) {
-            return {type: GET_CONVERSATION_FAIL, error: result.data}
-        }
-        return {type: GET_CONVERSATION_SUCCESS, result: result.data}
-    }
-}
-
 export const SEND_MESSAGE = (data) => {
     return async function() {
         let result = await sendConversationMessage_API(data)
