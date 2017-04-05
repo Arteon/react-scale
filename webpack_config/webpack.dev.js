@@ -8,7 +8,13 @@ const webpack = require('webpack')
 const base = require('./webpack.base')
 const _ = require('./utils')
 const FriendlyErrors = require('friendly-errors-webpack-plugin')
-
+base.module.loaders.push({
+    test: /\.css$/,
+    loaders: ['style-loader', 'css-loader', 'resolve-url-loader']
+}, {
+    test: /\.scss$/,
+    loaders: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader']
+})
 base.devtool = 'eval-source-map'
 base.plugins.push(
   new webpack.DefinePlugin({

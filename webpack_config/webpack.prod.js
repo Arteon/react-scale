@@ -4,19 +4,24 @@ const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const ProgressPlugin = require('webpack/lib/ProgressPlugin')
 // const OfflinePlugin = require('offline-plugin')
+const base = require('./webpack.base')
+const config = require('./config')
 
 process.env.NODE_ENV = 'production'
 if (!process.env.REACT_WEBPACK_ENV) {
     process.env.REACT_WEBPACK_ENV = 'dist'
 }
 
-const base = require('./webpack.base')
-const _ = require('./utils')
-const config = require('./config')
-
-
 exec(`rm -rf ${_.currentApp}/dist/`)
-base.devtool = 'source-map'
+
+base.devtool = 'cheap-source-mapp'
+base.module.loaders.push({
+    test: /\.css$/,
+    use: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader'})
+},{
+    test: /\.scss$/,
+    use: ExtractTextPlugin.extract({fallback: 'style-loader', use: ['css-loader', 'sass-loader']})
+})
 
 // a white list to add dependencies to vendor chunk
 base.entry.vendor = config.vendor
@@ -25,7 +30,7 @@ base.output.filename = '[name].[chunkhash:8].js'
 // add webpack plugins
 base.plugins.push(
   new ProgressPlugin(),
-  new ExtractTextPlugin('styles.[contenthash:8].css'),
+  new ExtractTextPlugin('[name].[contenthash:8].css'),
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production')
   }),

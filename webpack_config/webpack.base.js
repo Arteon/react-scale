@@ -44,17 +44,17 @@ module.exports = {
         loaders: [
             {
                 test: /\.(js|jsx)$/,
+                enforce: 'pre',
+                loaders: ['eslint-loader'],
+                exclude: [/node_modules/]
+            },
+            {
+                test: /\.(js|jsx)$/,
                 loaders: ['babel-loader'],
                 exclude: [/node_modules/]
             }, {
                 test: /\.(ico|jpg|png|gif|eot|otf|webp|ttf|woff|woff2|svg$)(\?.*)?$/,
                 loader: 'file-loader'
-            }, {
-                test: /\.css$/,
-                loaders: ['style-loader', 'css-loader', 'resolve-url-loader']
-            }, {
-                test: /\.scss$/,
-                loaders: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader']
             }
         ]
     },
