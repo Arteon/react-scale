@@ -13,7 +13,7 @@ const app = express()
 const port = config.port
 webpackConfig.entry.client = [
     'react-hot-loader/patch',
-    `webpack-hot-middleware/client?reload=true`,
+    `webpack-hot-middleware/client?reload=true&timeout=2000&overlay=false`,
      'webpack/hot/only-dev-server',
     webpackConfig.entry.client
 ]
@@ -55,5 +55,5 @@ app.get('*', (req, res) => {
         res.end(html)
     })
 })
-console.log(process.env.REACT_WEBPACK_ENV)
+
 app.listen(port)

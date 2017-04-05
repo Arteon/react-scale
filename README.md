@@ -1,5 +1,7 @@
 # React-Scale
 ## [WORKS, but still is under development]
+[![David](https://img.shields.io/david/Metnew/react-scale.svg)]()
+[![David](https://img.shields.io/david/dev/Metnew/react-scale.svg)]()
 ### Preface:
 I think, that you've ever had a situation in your project, when you have 2 almost similar apps with common css, common components, but they're still so different.
 

@@ -1,4 +1,4 @@
-import {GET_INBOX_SUCCESS, GET_INBOX_FAIL} from 'actions/inbox'
+import {GET_INBOX_SUCCESS, GET_INBOX_FAIL} from 'shared_module/actions'
 import {LOCATION_CHANGE} from 'shared_module/actions'
 
 const initialState = {

@@ -24,15 +24,16 @@ if (config.isDev) {
 
 function configureStore(initialState) {
     // Add initialState handler
-    const middleware = applyMiddleware(routerMiddleware(browserHistory));
-    const store = createStore(RootReducer, composeWithDevTools(applyMiddleware(thunk)), middleware);
+    const middleware = applyMiddleware(routerMiddleware(browserHistory))
+    const store = createStore(RootReducer, composeWithDevTools(applyMiddleware(thunk)), middleware)
 
     if (module.hot) {
         // Enable Webpack hot module replacement for reducers
         module.hot.accept('./reducers', () => {
-            const nextRootReducer = require('./reducers/index');
-            store.replaceReducer(nextRootReducer);
-        });
+            const nextRootReducer = require('./reducers').default
+            console.log(nextRootReducer)
+            store.replaceReducer(nextRootReducer)
+        })
     }
 
     return store;
@@ -51,15 +52,11 @@ const renderRoot = (Root) => {
 }
 
 renderRoot(Root)
-//
-// if (module.hot) {
-//     module.hot.accept()
-// }
+console.log(' ?')
 
-// FIXME: SSR!!!
-// match({history: browserHistory, routes}, (error, redirectLocation, renderProps) => {
-//     render(
-//         <Provider store={store}>
-//             <Router {...renderProps} />
-//         </Provider>, document.getElementById('app'))
-// })
+if (module.hot) {
+    module.hot.accept('../shared_module/components/views/Root/index', () => {
+        let newRoot = require('../shared_module/components/views/Root/index').default
+        return renderRoot(Root)
+    })
+}

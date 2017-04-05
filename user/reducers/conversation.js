@@ -5,7 +5,7 @@ import {
     GET_CONVERSATION_FAIL,
     ACCEPT_QUOTE_FAIL,
     SEND_MESSAGE_FAIL
-} from 'actions/conversation'
+} from 'shared_module/actions'
 import {LOCATION_CHANGE} from 'shared_module/actions'
 
 const initialState = {

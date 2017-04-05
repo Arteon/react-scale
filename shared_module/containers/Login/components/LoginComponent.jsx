@@ -132,6 +132,7 @@ export default class LoginComponent extends Component {
 
         return (
             <Grid verticalAlign='middle' centered columns={1}>
+                <h1>lol</h1>
                 <Grid.Column tablet={10} mobile={16} computer={6}>
                     <Form onSubmit={this.login.bind(this)}{...loginFormProps}>
                         {prettyLoginError && <Message error header={prettyLoginError.header} content={prettyLoginError.content}/>}
