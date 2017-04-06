@@ -1,4 +1,4 @@
-import {isLoggedIn} from 'shared_module/api';
+import {isLoggedIn} from 'shared_module/api'
 import {
     LOGIN_AUTH_FAIL,
     LOGIN_AUTH_SUCCESS,
@@ -15,7 +15,7 @@ export function auth(state = initialState, action) {
     switch (action.type) {
         case LOCATION_CHANGE:
             {
-                let loggedIn = isLoggedIn();
+                let loggedIn = isLoggedIn()
                 if (action.payload === '/auth') {
                     return {
                         ...state

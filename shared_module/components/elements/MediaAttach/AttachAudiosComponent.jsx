@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 
 import {
     Button,
     List,
     Checkbox
-}  from 'semantic-ui-react';
+}  from 'semantic-ui-react'
 
 export default class AttachAudiosComponent extends Component {
 
@@ -13,7 +13,7 @@ export default class AttachAudiosComponent extends Component {
         this.state = {
             addAudioError: false,
             error: '',
-            selectedAudios:this.props.selectedAudios,
+            selectedAudios:this.props.selectedAudios
         }
     }
 
@@ -31,7 +31,7 @@ export default class AttachAudiosComponent extends Component {
     }
 
     addAudio(e) {
-        const file = e.target.files[0];
+        const file = e.target.files[0]
         this.props.addAudio(file)
 
     }
@@ -61,7 +61,7 @@ export default class AttachAudiosComponent extends Component {
 
     render() {
 
-        let {allAudios, removeAudio} = this.props
+        let {allAudios} = this.props
         let {selectedAudios, addAudioError, error} = this.state
 
 

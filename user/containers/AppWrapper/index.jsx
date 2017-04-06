@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {LOGOUT_AUTH} from 'shared_module/actions';
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {LOGOUT_AUTH} from 'shared_module/actions'
 import {push} from 'react-router-redux'
 import {App} from 'shared_module/containers'
 import sidebarRoutingList from 'routing/sidebarRoutingList'
@@ -8,7 +8,7 @@ import sidebarRoutingList from 'routing/sidebarRoutingList'
 @connect(mapStateToProps, mapDispatchToProps)
 export default class AppWrapper extends Component {
     constructor(props) {
-        super(props);
+        super(props)
     }
 
     static propTypes = {
@@ -20,8 +20,8 @@ export default class AppWrapper extends Component {
     }
 
     checkAppLoggedIn() {
-        let {checkLoggedIn, isLoggedIn, router} = this.props;
-        let path = router.getCurrentLocation().pathname;
+        let {checkLoggedIn, isLoggedIn, router} = this.props
+        let path = router.getCurrentLocation().pathname
         // check is user allowed to visit this path
         checkLoggedIn(isLoggedIn, path)
     }
@@ -39,7 +39,7 @@ export default class AppWrapper extends Component {
     }
 
     render() {
-        let {children, sidebarOpened, closeSidebar, isLoggedIn, logout} = this.props;
+        let {children, isLoggedIn, logout} = this.props
         let sidebarRouting = this.getSidebarRouting()
         let propsForAppComponent = {
             sidebarRouting,
@@ -50,11 +50,11 @@ export default class AppWrapper extends Component {
 
         return (
             <App {...propsForAppComponent} />
-        );
+        )
     }
 }
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state) {
     return {
         isLoggedIn: state.auth.loggedIn
     }

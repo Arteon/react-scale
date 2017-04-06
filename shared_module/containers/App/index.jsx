@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import {AppComponent} from 'shared_module/components'
-import {CLOSE_SIDEBAR, OPEN_SIDEBAR, WINDOW_RESIZE} from 'shared_module/actions';
+import {CLOSE_SIDEBAR, OPEN_SIDEBAR, WINDOW_RESIZE} from 'shared_module/actions'
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class App extends Component {
     constructor(props) {
-        super(props);
+        super(props)
     }
 
     static propTypes = {
@@ -20,23 +20,30 @@ export default class App extends Component {
         logout: React.PropTypes.func,
         toggleSidebar: React.PropTypes.func,
         onHeaderInboxClick: React.PropTypes.func,
-        sidebarRoutingList: React.PropTypes.array // FIX!
+        sidebarRouting: React.PropTypes.array,
+        handleWindowResize: React.PropTypes.func
     }
 
     componentDidUpdate() {}
 
     componentWillMount() {
-        let {handleWindowResize} = this.props;
-        window.addEventListener('resize', handleWindowResize);
-    }
-
-    getSidebarRouting() {
-        return sidebarRoutingList
+        let {handleWindowResize} = this.props
+        window.addEventListener('resize', handleWindowResize)
     }
 
     render() {
-        let {children, sidebarOpened, closeSidebar, obfuscatorActive, isLoggedIn, logout, onHeaderInboxClick, toggleSidebar, sidebarRouting} = this.props;
-        let title = children.props.route.name;
+        let {
+            children,
+            sidebarOpened,
+            closeSidebar,
+            obfuscatorActive,
+            isLoggedIn,
+            logout,
+            onHeaderInboxClick,
+            toggleSidebar,
+            sidebarRouting
+        } = this.props
+        let title = children.props.route.name
 
         let propsForAppComponent = {
             sidebarRouting,
@@ -51,9 +58,7 @@ export default class App extends Component {
             title
         }
 
-        return (
-            <AppComponent {...propsForAppComponent} />
-        );
+        return (<AppComponent {...propsForAppComponent}/>)
     }
 }
 

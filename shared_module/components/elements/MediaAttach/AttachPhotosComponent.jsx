@@ -40,11 +40,7 @@ export default class AttachPhotosComponent extends Component {
 
     static defaultProps = {
       allPhotos: []
-    }
-
-
-
-
+  } 
 
     togglePhoto({id}) {
         let selectedPhotos = this.state.selectedPhotos
@@ -85,16 +81,17 @@ export default class AttachPhotosComponent extends Component {
 
     onChange() {
         //tie this to selectedPhotos change
+        // what state??
         this.props.onChange({value: state.selectedPhotos})
     }
 
 
 
     render(){
-        let {allPhotos, removePhoto} = this.props
+        let {allPhotos} = this.props
         let {selectedPhotos, addPhotoError, error} = this.state
 
-        let photos_components = allPhotos.map((a, i) => {
+        let photos_components = allPhotos.map((a) => {
             let checked = (selectedPhotos.findIndex(item => item == a.id) != -1)
             return (
                     <div key={a.id}>

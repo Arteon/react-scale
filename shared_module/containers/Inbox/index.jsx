@@ -1,19 +1,15 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import {
-    Icon,
     Loader,
     Item,
-    Menu,
-    Header,
-    Grid,
-    Input
+    Grid
 } from 'semantic-ui-react'
-import {GET_INBOX} from 'shared_module/actions';
-import InboxItemComponent from './components/InboxItemComponent';
-import InboxRightSidebarComponent from './components/InboxRightSidebarComponent';
-import _ from 'lodash';
-import './Inbox.scss';
+import {GET_INBOX} from 'shared_module/actions'
+import InboxItemComponent from './components/InboxItemComponent'
+import InboxRightSidebarComponent from './components/InboxRightSidebarComponent'
+import _ from 'lodash'
+import './Inbox.scss'
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Inbox extends Component {
@@ -42,8 +38,8 @@ export default class Inbox extends Component {
     }
 
     render() {
-        let {conversations} = this.props;
-        let {activeItemFilter} = this.state;
+        let {conversations} = this.props
+        let {activeItemFilter} = this.state
         let conversationsLoading = _.isNull(conversations)
         let noConversations = _.isArray(conversations) && conversations.length === 0
         let conversations_components = null

@@ -22,7 +22,7 @@ import {
     REMOVE_AUDIO_FAIL,
 
     LOCATION_CHANGE
-} from 'shared_module/actions';
+} from 'shared_module/actions'
 
 const initialState = {
     addPhotoError: false,

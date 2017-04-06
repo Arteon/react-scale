@@ -1,7 +1,7 @@
 import {
     SEND_ERROR_TO_SERVER_FAIL,
     SEND_ERROR_TO_SERVER_SUCCESS
-} from 'shared_module/actions';
+} from 'shared_module/actions'
 
 let initialState = {}
 

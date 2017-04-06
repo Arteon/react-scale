@@ -1,110 +1,98 @@
+// Request utils, feel free to replace with your code (get, post are used in ApiServices)
 import {getLocalToken} from 'shared_module/api';
-import {isObject} from 'lodash';
-import {THROW_ERROR} from 'shared_module/actions'
-// no handling of post() with no args?
-export function requestWrapper(method) {
+import _ from 'lodash';
+import config from 'config'
+
+function requestWrapper(method) {
     return async function(url, data = null, params = {}) {
-        // default params to fetch = method + (Content-Type for lulz)
+        if (method === 'GET') {
+            params = data;
+            data = null;
+            // is it a GET?
+            // GET HAVE ONLY
+        } else if (_.isObject(data)) {
+            data = JSON.stringify(data)
+            // or is it a PUT, POST, DELETE?
+        } else {
+            // hmm, strange...
+            throw new Error(`XHR invalid, check ${method} for url ${url}`)
+        }
+
+        // default params for fetch = method + (Content-Type)
         let defaults = {
             method: method,
-            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json; charset=UTF-8'
             }
         }
 
-        // console.log(url, data, params)
-        if (method === 'GET') {
-            // GET HAVE ONLY params and url
-            params = data
-            data = null
-        } else if (isObject(data)) {
-            if (data instanceof FormData) {
-                delete defaults.headers['Content-Type']
-            } else {
-                data = JSON.stringify(data)
-            }
-
-            // or is it a PUT, POST, DELETE?
-        } else {
-            // hmm, strange...
-            throw new Error(`XHR invalid, check ${method} for url ${url}, likely it was caused by empty request body and not-GET type of request`)
-        }
-
         // check that req url is relative and request was sent to our domain
-        if (true) {
+        if (url.match(/^https?:\/\//gi) > -1) { // && urlIsOurs
             let token = getLocalToken();
             if (token) {
+                // JWT??? maybe Bearer? no! JWT. RTFM about server-side jwt module
                 defaults.headers['Authorization'] = `JWT ${token}`;
             }
-            
-            if (window.BASE_API) {
-                url = window.BASE_API + url
-            }
-            // } else {
+            url = window.BASE_API + url;
+        } else {
             // if req was sent to another domain
             // yes, it might happens one day
             // it looks like we have to add some handlers here
-            // }
+        }
+        // if there is no data => it's GET.
+        if (data) {
+            defaults.body = data;
+        }
 
-            // if there is no data => it's GET.
-            if (data) {
-                defaults.body = data;
-            }
-
-            let paramsObj = {
-                ...defaults,
-                headers: {
-                    ...params,
-                    ...defaults.headers
-                }
-            }
-
-            try {
-                return await fetch(url, paramsObj)
-                    // .then(checkStatus)
-                    .then(parseJSON)
-                    .catch((err) => {
-                        console.error(err, "Catched error in utils/xhr_wrapper/fetch.catch()")
-                        return THROW_ERROR(err);
-                    })
-            } catch (e) {
-                console.log('Is fetch defined?', e)
-                return {}
-            }
+        let paramsObj = {...defaults, headers: {...params, ...defaults.headers}}
+        try {
+            return await fetch(url, paramsObj)
+                            .then(checkStatus)
+                            .then(parseJSON)
+                            .catch((err) => {
+                                console.error(err)
+                            });
+        } catch(e) {
+            console.error(e)
         }
     }
 }
 
 // middlewares
-// parse fetch json and return it
+// parse fetch json, add ok property and return request result
 async function parseJSON(res) {
     let json;
     try {
         json = await res.json()
     } catch (e) {
-        if (res.status == 204) {
-            return {ok: true, data: {}}
-        }
-        return {ok: false}
+        return {data: {}, ok: false}
     }
+
+    // simplest validation ever, ahah :)
     if (!res.ok) {
-        return {data: json, ok: false}
+        return {data: json, ok:false}
     }
-    // XXX: be carefull, resultOK - is a function with side effects
+    // resultOK - is a function with side effects
+    // It removes ok property from result object
     return {data: json, ok: true}
 }
+
 // checks reqs status
-// function checkStatus(response) {
-//     if (response.status >= 200 && response.status < 300) {
-//         return response
-//     } else if (response.status == 400) {
-//         return response
-//     } else {
-//         console.log(error, "Hm, xhr_wrapper/checkStatus: request has unpredicted status_code.")
-//         return response
-//     }
-// }
+function checkStatus(response) {
+  if (response.status >= 200 && response.status < 300) {
+    return response
+  } else if(response.status == 400){
+      return response
+  } else  {
+    var error = new Error(response.statusText)
+    error.response = response
+    console.error(error)
+    // throw error
+    return response
+
+  }
+}
+
 
 export const get = requestWrapper('GET')
 export const post = requestWrapper('POST')

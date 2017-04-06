@@ -10,7 +10,7 @@ export function noSpace(str, field) {
     // trully can't get why do we need this check,
     // but without it on /profile/settings page we get error
     if (str !== undefined) {
-        return true;
+        return true
     }
     return str.match(/[^-\s]/g) ? true : false
 }

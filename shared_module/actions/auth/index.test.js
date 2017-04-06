@@ -9,7 +9,7 @@ describe('Auth actions', () => {
     it('creates LOGIN_AUTH_SUCCESS when login has been done successfully', () => {
         let result = {
             data: {
-                token: "string"
+                token: 'string'
             }
         }
 
@@ -32,7 +32,7 @@ describe('Auth actions', () => {
     it('creates LOGIN_AUTH_FAIL when login hasn\'t been done successfully', () => {
         let result = {
             data: {
-                errors: ["array"]
+                errors: ['array']
             }
         }
         const expectedActions = [

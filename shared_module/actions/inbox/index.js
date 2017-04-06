@@ -1,7 +1,7 @@
-import {getInbox_API, resultOK} from 'shared_module/api';
+import {getInbox_API, resultOK} from 'shared_module/api'
 
-export const GET_INBOX_SUCCESS = 'GET_INBOX_SUCCESS';
-export const GET_INBOX_FAIL = 'GET_INBOX_FAIL';
+export const GET_INBOX_SUCCESS = 'GET_INBOX_SUCCESS'
+export const GET_INBOX_FAIL = 'GET_INBOX_FAIL'
 
 
 export const GET_INBOX = ()  => {

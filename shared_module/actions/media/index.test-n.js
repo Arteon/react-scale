@@ -15,13 +15,13 @@ describe('Media actions', () => {
     it('creates GET_PHOTOS_FAIL when it wasn\'t successful', () => {
         nock('http://example.com').get('/photos').reply(400, {
             data: {
-                error: "string"
+                error: 'string'
             }
         })
 
         const expectedActions = {
             type: actions.GET_PHOTOS_FAIL,
-            error: "Sorry, couldn't load photos"
+            error: 'Sorry, couldn\'t load photos'
         }
 
         const store = mockStore({})
@@ -55,14 +55,14 @@ describe('Media actions', () => {
     it('creates ADD_PHOTO_SUCCESS when photo has been added successfully', () => {
         nock('http://example.com/').post('/auth').reply(400, {
             data: {
-                errors: ["array"]
+                errors: ['array']
             }
         })
 
         const expectedActions = {
             type: actions.ADD_PHOTO_SUCCESS,
             error: {
-                errors: ["array"]
+                errors: ['array']
             }
         }
 
@@ -76,7 +76,7 @@ describe('Media actions', () => {
     it('creates ADD_PHOTO_FAIL when photo hasn\'t been added successfully', () => {
         nock('http://example.com/').post('/auth').reply(400, {
             data: {
-                errors: ["array"]
+                errors: ['array']
             }
         })
 
