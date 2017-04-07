@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import {LOGIN_AUTH, RECOVER_PASSWORD_AUTH, REGISTER_AUTH} from 'shared_module/actions'
 import LoginComponent from './components/LoginComponent'
 
@@ -19,10 +19,11 @@ export default class Login extends Component {
     componentWillMount() {}
 
     render() {
-        let {login, forgetPassword, register, componentState} = this.props;
+        // let {login, forgetPassword, register, componentState} = this.props
+        let loginComponentProps = {...this.props}
 
         return (
-            <LoginComponent login={login} componentState={componentState}  forgetPassword={forgetPassword} register={register}/>
+            <LoginComponent {...loginComponentProps}/>
         )
     }
 }

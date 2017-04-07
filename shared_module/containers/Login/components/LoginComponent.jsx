@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
-import {Button, Form, Message, Grid, TextArea} from 'semantic-ui-react';
-import {Link} from 'react-router';
+import React, {Component} from 'react'
+import {Button, Form, Message, Grid} from 'semantic-ui-react'
 import {InputComponent} from 'shared_module/components'
-import {isRequired, maxSize, latin, noSpace, composition} from 'shared_module/utils/validate';
+import {isRequired, maxSize, latin, noSpace, composition} from 'shared_module/utils/validate'
 
 export default class LoginComponent extends Component {
 
@@ -42,30 +41,20 @@ export default class LoginComponent extends Component {
         componentState: React.PropTypes.object
     }
 
-    componentWillMount() {}
-
     invalidExists() {
         for (let key in this.state.invalid) {
             if (this.state.invalid[key]) {
                 console.log(key + ' IS INVALID DUDE')
-                // this.state.formProps.error = true
-                // let obj = {...state}
-                // obj.formProps.error = true;
-                // this.setState(obj)
                 return true
             }
         }
-        // obj.formProps.error = false;
-        // this.setState(obj)
         return false
     }
 
-    componentWillReceiveProps() {}
-
     async login(e) {
         e.preventDefault()
-        let {login} = this.props;
-        let {username, password} = this.state;
+        let {login} = this.props
+        let {username, password} = this.state
         let data = {username, password}
         // set loading state
         this.setState({
@@ -85,10 +74,10 @@ export default class LoginComponent extends Component {
         //will be fired twice
         // first render - result of LOGIN_AUTH,
         // second - change btn_loading state
-        if (err && err["non_field_errors"]) {
+        if (err && err['non_field_errors']) {
             return {
                 header: 'Invalid credentials',
-                content: err["non_field_errors"][0]
+                content: err['non_field_errors'][0]
             }
         }
     }
@@ -101,10 +90,10 @@ export default class LoginComponent extends Component {
     }
 
     render() {
-        let {username, password, btn_loading} = this.state;
-        let {componentState} = this.props;
+        let {btn_loading} = this.state
+        let {componentState} = this.props
         // error from server
-        let {loginError} = componentState;
+        let {loginError} = componentState
         // props for form error state
         let loginFormProps = {error: !!loginError}
         // login form error
@@ -132,7 +121,6 @@ export default class LoginComponent extends Component {
 
         return (
             <Grid verticalAlign='middle' centered columns={1}>
-                <h1>lol</h1>
                 <Grid.Column tablet={10} mobile={16} computer={6}>
                     <Form onSubmit={this.login.bind(this)}{...loginFormProps}>
                         {prettyLoginError && <Message error header={prettyLoginError.header} content={prettyLoginError.content}/>}

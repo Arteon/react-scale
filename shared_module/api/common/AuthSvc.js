@@ -24,7 +24,7 @@ export function setLocalToken(token) {
 }
 
 export function isLoggedIn() {
-    console.log("local token is null:", getLocalToken() === null)
+    console.log(`local token is null:${getLocalToken() === null ? 'YES': 'NO'}`)
     // switch logged in here
     // return true
     let localToken = getLocalToken()

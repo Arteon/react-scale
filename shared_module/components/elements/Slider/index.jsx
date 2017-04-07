@@ -4,13 +4,12 @@ export default class Slider extends Component {
     static propTypes = {
         min: React.PropTypes.number, // min value in range
         max: React.PropTypes.number, // max value in range
-        // value: React.PropTypes.number, // initial value
+        value: React.PropTypes.number, // initial value
         step: React.PropTypes.number, // value interval between labels
         disabled: React.PropTypes.bool,
         vertical: React.PropTypes.bool,
         inverted: React.PropTypes.bool,
         onChange: React.PropTypes.func // onChange callback
-        // onClick: React.PropTypes.func // onClick callback
     }
 
     constructor(props) {
@@ -40,7 +39,7 @@ export default class Slider extends Component {
     }
 
     render() {
-        let {min, disabled, onChange, max, step, vertical} = this.props
+        let {min, disabled, max, step, vertical} = this.props
         let {value} = this.state
 
         let props = {

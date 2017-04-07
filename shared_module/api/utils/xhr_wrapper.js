@@ -1,7 +1,6 @@
 // Request utils, feel free to replace with your code (get, post are used in ApiServices)
 import {getLocalToken} from 'shared_module/api';
 import _ from 'lodash';
-import config from 'config'
 
 function requestWrapper(method) {
     return async function(url, data = null, params = {}) {

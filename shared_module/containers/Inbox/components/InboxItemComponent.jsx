@@ -1,13 +1,12 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 import {
     Button,
     Icon,
     Item,
     Label,
-    Divider,
-    Segment
+    Divider
 } from 'semantic-ui-react'
-import {Link} from 'react-router';
+import {Link} from 'react-router'
 import DateInboxItemComponent from './DateItemComponent'
 
 export default class InboxItemComponent extends Component {
@@ -20,8 +19,8 @@ export default class InboxItemComponent extends Component {
     }
 
     render() {
-        let {item} = this.props;
-        let link = '/inbox/' + item.id;
+        let {item} = this.props
+        let link = '/inbox/' + item.id
         if (!item.id) {
             item = {
                 client: {},

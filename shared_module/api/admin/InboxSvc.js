@@ -1,5 +1,4 @@
 import {get, post, patch} from '../utils';
-// import * as store from 'store2'
 
 export async function getInbox_API() {
     return await get('/inbox/')
@@ -10,7 +9,7 @@ export async function getConversation_API(id) {
 }
 
 export async function sendConversationMessage_API(data) {
-    return await post(`/messages/`, data)
+    return await post('/messages/', data)
 }
 
 export async function acceptConversationQuote_API(id, data) {

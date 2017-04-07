@@ -39,7 +39,7 @@ export default class AppWrapper extends Component {
     }
 
     render() {
-        let {children, sidebarOpened, closeSidebar, isLoggedIn, logout} = this.props;
+        let {children, isLoggedIn, logout} = this.props;
         let sidebarRouting = this.getSidebarRouting()
         let propsForAppComponent = {
             sidebarRouting,
@@ -52,7 +52,7 @@ export default class AppWrapper extends Component {
     }
 }
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state) {
     return {isLoggedIn: state.auth.loggedIn}
 }
 

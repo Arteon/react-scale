@@ -1,18 +1,11 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import {
-    // Button,
     Icon,
-    Loader,
-    Item,
     Menu,
-    Header,
-    // Label,
-    // Divider,
-    Grid,
     Input
 } from 'semantic-ui-react'
-// import {Link} from 'react-router';
+import {GET_INBOX} from 'shared_module/actions'
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Inbox extends Component {
@@ -29,13 +22,13 @@ export default class Inbox extends Component {
     }
 
     handleItemFilterClick(e, {name}) {
-        let {sendStateToParent} = this.props;
+        let {sendStateToParent} = this.props
         this.setState({...this.state, activeItemFilter:name})
         sendStateToParent(this.state)
     }
 
     render() {
-        let {activeItemFilter} = this.state;
+        let {activeItemFilter} = this.state
         let verticalMenu = {
             vertical: true,
             fluid: true
@@ -72,7 +65,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         getConversations: async() => {
-            let result = await dispatch(getInbox())
+            let result = await dispatch(GET_INBOX())
             dispatch(result)
         }
     }
